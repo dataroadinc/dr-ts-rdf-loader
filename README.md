@@ -61,6 +61,30 @@ module.exports = {
 }
 ```
 
+Or with options:
+
+```javascript
+// webpack.config.js or next.config.mjs
+module.exports = {
+  module: {
+    rules: [
+      {
+        test: /\.(ttl|nt|nq|rdf|jsonld|trig)$/,
+        use: [
+          {
+            loader: "@dataroadinc/rdf-loader",
+            options: {
+              failOnError: false,
+              verbose: true,
+            },
+          },
+        ],
+      },
+    ],
+  },
+}
+```
+
 ### 2. TypeScript Configuration
 
 Add type declarations to your `global.d.ts` or similar:
@@ -114,6 +138,46 @@ for (const quad of dataset) {
   )
 }
 ```
+
+### 4. Loader Options
+
+The loader supports the following options:
+
+- `failOnError` (boolean, default: false): Whether to fail the build on parsing
+  errors
+- `verbose` (boolean, default: false): Whether to log detailed information about
+  processing
+- `format` (string): Override the detected format based on file extension
+
+### 5. Troubleshooting
+
+**Issue**: "Module not found: Package path . is not exported"
+
+**Solution**: Use the loader with the full path in webpack configuration:
+
+```javascript
+const path = require("path")
+
+module.exports = {
+  webpack: config => {
+    config.module.rules.push({
+      test: /\.(ttl|nt|nq|rdf|jsonld|trig)$/,
+      use: [
+        path.resolve(
+          __dirname,
+          "node_modules/@dataroadinc/rdf-loader/dist/index.js"
+        ),
+      ],
+    })
+    return config
+  },
+}
+```
+
+**Issue**: TypeScript errors with RDF imports
+
+**Solution**: Ensure you have the type declarations in your `global.d.ts` file
+and that `@rdfjs/types` is installed as a dependency.
 
 ## Dependencies
 
