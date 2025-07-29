@@ -1,0 +1,98 @@
+# Stateless Versioning Rule
+
+## CRITICAL: Version Numbers in package.json Context Matters
+
+When working in repositories that use `@dataroadinc/versioning` (stateless
+versioning):
+
+### ⚠️ package.json Version Context
+
+- **During Development**: The version in `package.json` (e.g., `"0.0.1"`) is a
+  placeholder
+- **After CI Build**: The version in `package.json` is updated and **IS**
+  correct
+- **Published Packages**: The version in `package.json` reflects the actual
+  published version
+
+### ✅ ALWAYS check git history for real version
+
+The actual version is determined by:
+
+1. **Git tags** (if any exist)
+2. **Conventional commits** since last tag
+3. **Branch name** (feature branches get `base-branch-count` format)
+4. **Commit count** on main branch
+
+### 🔍 How to get the real version
+
+```bash
+# Get current version (updates package.json)
+pnpm version:current
+
+# Get next patch version
+pnpm version:next
+
+# Check git tags
+git tag --list
+
+# Check conventional commits
+git log --oneline --grep="^feat\|^fix\|^docs\|^style\|^refactor\|^perf\|^test\|^build"
+```
+
+### 📝 Documentation Guidelines
+
+When documenting or analyzing issues:
+
+- ❌ **WRONG**: "The package version 0.0.1 has an issue..." (during development)
+- ✅ **CORRECT**: "The package (using stateless versioning) has an issue..."
+  (during development)
+- ✅ **CORRECT**: "The package version 0.0.1 has an issue..." (after CI
+  build/published)
+
+- ❌ **WRONG**: "Update to version 0.0.7" (without context)
+- ✅ **CORRECT**: "Update to the latest version" or "Check git tags for latest
+  version"
+- ✅ **CORRECT**: "Update to version 0.0.7" (if referring to published package)
+
+### 🚨 Common Mistakes to Avoid
+
+1. **Version References**: Don't reference package.json version during
+   development without context
+2. **Analysis Documents**: Check if you're looking at development vs published
+   package
+3. **Error Messages**: Consider whether the error is from local development or
+   published package
+4. **Testing**: Use `pnpm version:current` to get the real version during
+   development
+
+### 📋 When to Update package.json Version
+
+- Only when explicitly running `pnpm version:current`
+- For documentation purposes (optional)
+- The real version is calculated at build time in CI/CD
+
+### 🔄 CI/CD Build Process
+
+1. **Development**: package.json has placeholder version (e.g., "0.0.1")
+2. **CI Build**: `pnpm version:current` updates package.json with real version
+3. **Publish**: npm package contains the correct version from updated
+   package.json
+4. **Consumers**: Get the correct version from published package
+
+**Important**: After CI builds, the package.json version IS correct and can be
+referenced.
+
+### 🔧 Version Calculation Logic
+
+- **Main Branch**: `base-count` (e.g., `1.0.0-5`)
+- **Feature Branches**: `base-branch-count` (e.g., `1.0.0-feature-branch-3`)
+- **No Tags**: Falls back to package.json version
+- **Patch Increment**: Always increments patch number
+
+### 📚 Related Documentation
+
+- **Official Documentation**: [@dataroadinc/versioning README](https://raw.githubusercontent.com/dataroadinc/dr-ts-versioning/refs/heads/main/README.md) - The authoritative source for stateless versioning
+- See `../dr-ts-versioning/README.md` for full versioning system details
+- Check `.github/workflows/ci.yml` and `.github/workflows/release.yml` for CI/CD integration description: globs: alwaysApply: false
+
+---

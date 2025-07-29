@@ -91,3 +91,7 @@ jspm_packages/
 
 # Generated files
 CHANGELOG.md
+
+# Analysis and planning documents
+RDF_LOADER_ANALYSIS.md
+PLAN.md

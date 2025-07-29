@@ -3,20 +3,30 @@
     "version": "0.0.1",
     "description": "A webpack loader for importing RDF files directly as JavaScript modules",
     "type": "module",
-    "main": "dist/index.js",
+    "main": "./dist/index.cjs",
+    "module": "./dist/index.js",
     "types": "dist/index.d.ts",
-    "loader": "./dist/index.js",
+    "loader": "./dist/index.cjs",
     "exports": {
         ".": {
+            "types": "./dist/index.d.ts",
             "import": "./dist/index.js",
-            "types": "./dist/index.d.ts"
+            "require": "./dist/index.cjs"
         },
         "./loader": {
+            "types": "./dist/index.d.ts",
             "import": "./dist/index.js",
-            "types": "./dist/index.d.ts"
+            "require": "./dist/index.cjs"
         },
         "./dist/index.js": {
             "import": "./dist/index.js"
+        },
+        "./dist/index.cjs": {
+            "require": "./dist/index.cjs"
+        },
+        "./webpack": {
+            "import": "./dist/index.js",
+            "require": "./dist/index.cjs"
         }
     },
     "files": [
@@ -25,7 +35,7 @@
         "LICENSE"
     ],
     "scripts": {
-        "build": "tsc",
+        "build": "node scripts/build.js",
         "clean": "rm -rf dist",
         "dev": "tsc --watch",
         "prebuild": "pnpm run clean",
