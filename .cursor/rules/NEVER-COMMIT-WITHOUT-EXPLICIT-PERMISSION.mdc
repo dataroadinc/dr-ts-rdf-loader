@@ -1,0 +1,77 @@
+# CRITICAL: NEVER COMMIT WITHOUT EXPLICIT PERMISSION
+
+## ABSOLUTE PROHIBITION ON COMMITS
+
+**CRITICAL WARNING**: This rule is MANDATORY and OVERRIDES all other
+considerations.
+
+### NEVER COMMIT UNLESS EXPLICITLY ASKED
+
+- **ABSOLUTE RULE**: NEVER execute `git commit` under ANY circumstances unless
+  the user explicitly asks with the EXACT words "please commit" or "commit this"
+  or "commit changes"
+- **NO EXCEPTIONS**: Even if changes are complete, even if tests pass, even if
+  everything looks ready - DO NOT COMMIT
+- **NO ASSUMPTIONS**: Do not assume the user wants a commit just because work is
+  done
+- **NO IMPLICIT PERMISSION**: Only explicit, direct requests to commit are valid
+
+### REQUIRED EXPLICIT PHRASES
+
+The ONLY acceptable phrases that allow committing are:
+
+- "please commit"
+- "commit this"
+- "commit changes"
+- "commit the changes"
+- "commit everything"
+
+**ANY OTHER PHRASE OR REQUEST IS NOT VALID FOR COMMITTING**
+
+### MANDATORY CONFIRMATION WORKFLOW
+
+Before ANY commit, you MUST:
+
+1. **Show the user what will be committed**: Run `git diff --cached` or
+   `git status`
+2. **Ask explicitly**: "Should I commit these changes?"
+3. **Wait for explicit "yes"** with one of the required phrases above
+4. **Only then commit**
+
+### WHAT TO DO INSTEAD OF COMMITTING
+
+When work is complete but no explicit commit request is made:
+
+1. **Show the current status**: Run `git status` to show what's changed
+2. **Ask the user**: "Would you like me to commit these changes?"
+3. **Wait for explicit permission**
+4. **Do nothing until explicitly asked to commit**
+
+### ENFORCEMENT
+
+- **VIOLATION**: If you commit without explicit permission, you have violated
+  this rule
+- **CONSEQUENCE**: This rule is absolute and non-negotiable
+- **REMINDER**: Check this rule before ANY git commit command
+
+### EXAMPLES OF WHAT NOT TO DO
+
+❌ "I'll commit these changes now" ❌ "Let me commit this for you" ❌ "I'm going
+to commit the changes" ❌ "Committing the changes" ❌ Any automatic or assumed
+commits
+
+### EXAMPLES OF WHAT TO DO
+
+✅ "The changes are ready. Would you like me to commit them?" ✅ "I've completed
+the work. Should I commit these changes?" ✅ "The tests pass. Do you want me to
+commit this?" ✅ Wait for explicit "please commit" or similar
+
+### FINAL WARNING
+
+**THIS RULE IS ABSOLUTE AND CANNOT BE OVERRIDDEN**
+
+**NEVER COMMIT WITHOUT EXPLICIT PERMISSION** **NEVER COMMIT WITHOUT EXPLICIT
+PERMISSION** **NEVER COMMIT WITHOUT EXPLICIT PERMISSION** description: globs:
+alwaysApply: false
+
+---

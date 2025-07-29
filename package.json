@@ -1,12 +1,17 @@
 {
     "name": "@dataroadinc/rdf-loader",
-    "version": "0.0.1",
+    "version": "0.0.4",
     "description": "A webpack loader for importing RDF files directly as JavaScript modules",
     "type": "module",
     "main": "dist/index.js",
     "types": "dist/index.d.ts",
+    "loader": "./dist/index.js",
     "exports": {
         ".": {
+            "import": "./dist/index.js",
+            "types": "./dist/index.d.ts"
+        },
+        "./loader": {
             "import": "./dist/index.js",
             "types": "./dist/index.d.ts"
         }

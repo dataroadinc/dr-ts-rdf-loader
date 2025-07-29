@@ -1,0 +1,33 @@
+# Markdown Line Length Rule
+
+## Line Length Limit
+
+- **Maximum line length**: 70 characters for all markdown files (.md, .mdx,
+  .mdc)
+- **Use line breaks**: Wrap long lines with proper line breaks
+- **Preserve readability**: Break at natural points like sentence endings
+
+## VSCode Settings
+
+Add to `.vscode/settings.json`:
+
+```json
+{
+    "markdown.extension.wordWrap": "bounded",
+    "markdown.extension.lineWidth": 70,
+    "editor.rulers": [70],
+    "[markdown]": {
+        "editor.wordWrap": "bounded",
+        "editor.wordWrapColumn": 70
+    }
+}
+```
+
+## Enforcement
+
+- Check line length when editing markdown files
+- Break lines at 70 characters
+- Use proper markdown line breaks (two spaces + newline) description: globs:
+  alwaysApply: false
+
+---

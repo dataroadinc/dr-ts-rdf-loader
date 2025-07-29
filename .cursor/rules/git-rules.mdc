@@ -1,5 +1,14 @@
 # Git Rules
 
+## ⚠️ CRITICAL WARNING: ABSOLUTE COMMIT PROHIBITION ⚠️
+
+**NEVER COMMIT WITHOUT EXPLICIT PERMISSION** **NEVER COMMIT WITHOUT EXPLICIT
+PERMISSION** **NEVER COMMIT WITHOUT EXPLICIT PERMISSION**
+
+This rule is ABSOLUTE and OVERRIDES all other considerations. You must NEVER
+execute `git commit` unless the user explicitly asks with the exact words
+"please commit", "commit this", or "commit changes".
+
 ## CRITICAL: PREVENTIVE MEASURES
 
 ### MANDATORY CONFIRMATION FLOW
