@@ -4,13 +4,23 @@ on:
         types: [closed]
         branches:
             - main
+    workflow_dispatch:
+        inputs:
+            confirm_release:
+                description: "Confirm manual release (patch version)"
+                required: true
+                default: false
+                type: boolean
 permissions:
     contents: write
 jobs:
     tag-and-release:
         if:
+            (github.event_name == 'pull_request' &&
             github.event.pull_request.merged == true &&
-            github.event.pull_request.base.ref == 'main'
+            github.event.pull_request.base.ref == 'main') || (github.event_name
+            == 'workflow_dispatch' && github.event.inputs.confirm_release ==
+            'true')
         runs-on: ubuntu-latest
         steps:
             - name: Checkout code
