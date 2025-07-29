@@ -1,0 +1,96 @@
+{
+    "name": "@dataroadinc/rdf-loader",
+    "version": "0.0.1",
+    "description": "A webpack loader for importing RDF files directly as JavaScript modules",
+    "type": "module",
+    "main": "dist/index.js",
+    "types": "dist/index.d.ts",
+    "exports": {
+        ".": {
+            "import": "./dist/index.js",
+            "types": "./dist/index.d.ts"
+        }
+    },
+    "files": [
+        "dist/",
+        "README.md",
+        "LICENSE"
+    ],
+    "scripts": {
+        "build": "tsc",
+        "clean": "rm -rf dist",
+        "dev": "tsc --watch",
+        "prebuild": "pnpm run clean",
+        "prepublishOnly": "pnpm run build",
+        "prepare": "husky",
+        "lint": "eslint .",
+        "lint:md": "markdownlint '**/*.md'",
+        "lint:md:fix": "markdownlint '**/*.md' --fix",
+        "fix:md": "./fix-markdown.sh",
+        "format": "prettier --write . --config prettier.config.js",
+        "format:check": "prettier --check . --config prettier.config.js",
+        "test": "vitest run",
+        "test:watch": "vitest",
+        "version:current": "node node_modules/@dataroadinc/versioning/dist/update-package-version.js",
+        "version:next": "node node_modules/@dataroadinc/versioning/dist/next-patch-version.js",
+        "version:release": "node node_modules/@dataroadinc/versioning/dist/generate-changelog.js && pnpm run version:current",
+        "generate-changelog": "node node_modules/@dataroadinc/versioning/dist/generate-changelog.js",
+        "next-patch-version": "node node_modules/@dataroadinc/versioning/dist/next-patch-version.js",
+        "update-package-version": "node node_modules/@dataroadinc/versioning/dist/update-package-version.js"
+    },
+    "keywords": [
+        "rdf",
+        "webpack",
+        "loader",
+        "turtle",
+        "n-triples",
+        "json-ld",
+        "rdf-xml",
+        "trig",
+        "semantic-web",
+        "typescript"
+    ],
+    "author": "DataRoad Inc.",
+    "license": "MIT",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/dataroadinc/dr-ts-rdf-loader.git"
+    },
+    "bugs": {
+        "url": "https://github.com/dataroadinc/dr-ts-rdf-loader/issues"
+    },
+    "homepage": "https://github.com/dataroadinc/dr-ts-rdf-loader#readme",
+    "dependencies": {
+        "@rdfjs/formats-common": "^3.1.0",
+        "@rdfjs/serializer-rdfjs": "^0.1.3",
+        "string-to-stream": "^3.0.1"
+    },
+    "devDependencies": {
+        "@commitlint/cli": "^19.8.1",
+        "@commitlint/config-conventional": "^19.8.1",
+        "@dataroadinc/versioning": "^0.0.4",
+        "@eslint/eslintrc": "^3.3.1",
+        "@eslint/js": "^9.23.0",
+        "@rdfjs/types": "^2.0.1",
+        "@types/node": "^24.0.13",
+        "@typescript-eslint/eslint-plugin": "^8.15.0",
+        "@typescript-eslint/parser": "^8.15.0",
+        "eslint": "^9.31.0",
+        "eslint-config-prettier": "^10.1.5",
+        "eslint-plugin-import": "^2.31.0",
+        "globals": "^16.0.0",
+        "husky": "^9.1.7",
+        "markdownlint-cli": "^0.45.0",
+        "prettier": "^3.6.2",
+        "typescript": "^5.8.3",
+        "vitest": "^3.2.4"
+    },
+    "peerDependencies": {
+        "@rdfjs/types": "^2.0.0"
+    },
+    "engines": {
+        "node": ">=22.0.0",
+        "pnpm": ">=10.0.0"
+    },
+    "packageManager": "pnpm@10.10.0"
+}
