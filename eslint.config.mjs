@@ -81,6 +81,24 @@ export default [
     },
   },
 
+  // Node.js scripts configuration
+  {
+    files: ["scripts/**/*.js"],
+    languageOptions: {
+      globals: {
+        ...globals.node,
+      },
+      parserOptions: {
+        ecmaVersion: "latest",
+        sourceType: "module",
+      },
+    },
+    rules: {
+      "no-console": "off",
+      "no-undef": "error",
+    },
+  },
+
   // Ignore patterns
   {
     ignores: ["dist/", "build/", "node_modules/", ".idea/", ".tmp/"],
