@@ -7,7 +7,7 @@ describe("@dataroadinc/rdf-loader", () => {
       resourcePath: "/test/path/example.ttl",
       async: () => (error: Error | null, result: string) => {
         expect(error).toBeNull()
-        expect(result).toContain("module.exports")
+        expect(result).toContain("export default")
         expect(result).toContain("factory")
       },
     }
@@ -48,7 +48,7 @@ ex:Person a ex:Person .`,
         resourcePath: `/test/path/example.${ext}`,
         async: () => (error: Error | null, result: string) => {
           expect(error).toBeNull()
-          expect(result).toContain("module.exports")
+          expect(result).toContain("export default")
         },
       }
 
@@ -61,7 +61,7 @@ ex:Person a ex:Person .`,
       resourcePath: "/test/path/empty.ttl",
       async: () => (error: Error | null, result: string) => {
         expect(error).toBeNull()
-        expect(result).toContain("module.exports")
+        expect(result).toContain("export default")
       },
     }
 
@@ -73,7 +73,7 @@ ex:Person a ex:Person .`,
       resourcePath: "/test/path/malformed.ttl",
       async: () => (error: Error | null, result: string) => {
         // Should still generate code even with malformed input
-        expect(result).toContain("module.exports")
+        expect(result).toContain("export default")
       },
     }
 
@@ -94,7 +94,7 @@ ex:Person a ex:Person
       options: { verbose: true },
       async: () => (error: Error | null, result: string) => {
         expect(error).toBeNull()
-        expect(result).toContain("module.exports")
+        expect(result).toContain("export default")
       },
     }
 
@@ -115,7 +115,7 @@ ex:Person a ex:Person .`
       options: { failOnError: true },
       async: () => (error: Error | null, result: string) => {
         expect(error).toBeNull()
-        expect(result).toContain("module.exports")
+        expect(result).toContain("export default")
       },
     }
 
@@ -151,7 +151,7 @@ ex:Person a ex:Person
       options: { verbose: true, failOnError: false },
       async: () => (error: Error | null, result: string) => {
         expect(error).toBeNull()
-        expect(result).toContain("module.exports")
+        expect(result).toContain("export default")
       },
     }
 
@@ -179,7 +179,7 @@ ex:Person a ex:Person
       options: {},
       async: () => (error: Error | null, result: string) => {
         expect(error).toBeNull()
-        expect(result).toContain("module.exports")
+        expect(result).toContain("export default")
       },
     }
 
