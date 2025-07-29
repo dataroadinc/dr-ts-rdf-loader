@@ -25,8 +25,8 @@ importers:
         specifier: ^19.8.1
         version: 19.8.1
       '@dataroadinc/versioning':
-        specifier: ^0.0.4
-        version: 0.0.4
+        specifier: 0.0.6
+        version: 0.0.6
       '@eslint/eslintrc':
         specifier: ^3.3.1
         version: 3.3.1
@@ -156,8 +156,8 @@ packages:
     resolution: {integrity: sha512-/yCrWGCoA1SVKOks25EGadP9Pnj0oAIHGpl2wH2M2Y46dPM2ueb8wyCVOD7O3WCTkaJ0IkKvzhl1JY7+uCT2Dw==}
     engines: {node: '>=v18'}
 
-  '@dataroadinc/versioning@0.0.4':
-    resolution: {integrity: sha512-VnvXAi91YRcsg8ew/2IE4XdLl5sn9ORKpA6atk6Wnrom2M7TuXyi/gUaN6oC8GcdVcOTKbThDtSoybDL7a9n+Q==}
+  '@dataroadinc/versioning@0.0.6':
+    resolution: {integrity: sha512-PYC9NabKcx8IPK6aCpVhezHbWlm0USTNefeefLAY95RemWQcomUkHF3ndPuK66hcMDlzAt02nz56efmf4sQeDg==}
     engines: {node: '>=22.0.0', pnpm: '>=10.0.0'}
     hasBin: true
 
@@ -2420,7 +2420,7 @@ snapshots:
       '@types/conventional-commits-parser': 5.0.1
       chalk: 5.4.1
 
-  '@dataroadinc/versioning@0.0.4': {}
+  '@dataroadinc/versioning@0.0.6': {}
 
   '@esbuild/aix-ppc64@0.25.8':
     optional: true
