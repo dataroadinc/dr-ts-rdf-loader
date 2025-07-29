@@ -45,7 +45,7 @@ export default async function loader(
 
     try {
       const serializer = new Serializer({
-        module: "commonjs",
+        module: "esm",
       })
       const quadStream = parsers.import(mediaType, toStream(source))
       const outputStream = serializer.import(quadStream)
@@ -64,7 +64,7 @@ export default async function loader(
         if (failOnError) {
           callback(new Error(errorMessage), "")
         } else {
-          callback(null, "module.exports = function(factory) { return []; };")
+          callback(null, "export default function(factory) { return []; };")
         }
       })
 
@@ -81,7 +81,7 @@ export default async function loader(
       if (failOnError) {
         callback(new Error(errorMessage), "")
       } else {
-        callback(null, "module.exports = function(factory) { return []; };")
+        callback(null, "export default function(factory) { return []; };")
       }
     }
   })
