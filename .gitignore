@@ -92,6 +92,9 @@ jspm_packages/
 # Generated files
 CHANGELOG.md
 
-# Analysis and planning documents
-RDF_LOADER_ANALYSIS.md
-PLAN.md
+# Allowed Markdown files in the root directory
+!README.md
+
+# Analysis and planning documents for AI, 
+# keep them all out of the repo
+*.md
