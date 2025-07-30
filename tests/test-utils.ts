@@ -21,7 +21,10 @@ export class TestProjectBuilder {
   private testProjectDir: string
 
   constructor() {
-    this.tempDir = join(tmpdir(), `rdf-loader-test-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`)
+    this.tempDir = join(
+      tmpdir(),
+      `rdf-loader-test-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`
+    )
     this.testProjectDir = join(this.tempDir, "test-project")
     mkdirSync(this.testProjectDir, { recursive: true })
   }
@@ -42,13 +45,15 @@ export class TestProjectBuilder {
       version: "0.0.1",
       private: true,
       scripts: {
-        dev: config.useTurbopack 
-          ? "next dev --turbo" 
-          : config.useNextJs 
-          ? "next dev" 
-          : "webpack serve --mode development",
+        dev: config.useTurbopack
+          ? "next dev --turbo"
+          : config.useNextJs
+            ? "next dev"
+            : "webpack serve --mode development",
         build: config.useNextJs ? "next build" : "webpack --mode production",
-        start: config.useNextJs ? "next start" : "webpack serve --mode production",
+        start: config.useNextJs
+          ? "next start"
+          : "webpack serve --mode production",
       },
       dependencies: {
         ...(config.useNextJs
@@ -99,9 +104,13 @@ export class TestProjectBuilder {
   }
 
   private createNextConfig(config: TestProjectConfig): void {
-    const nextConfig = config.nextConfig || `
+    const nextConfig =
+      config.nextConfig ||
+      `
 module.exports = {
-  ${config.useTurbopack ? `
+  ${
+    config.useTurbopack
+      ? `
   experimental: {
     turbo: {
       rules: {
@@ -131,7 +140,8 @@ module.exports = {
         }
       }
     }
-  }` : `
+  }`
+      : `
   webpack: (config) => {
     config.module.rules.push({
       test: /\\.(ttl|nt|nq|rdf|jsonld|trig)$/,
@@ -141,14 +151,17 @@ module.exports = {
       }]
     })
     return config
-  }`}
+  }`
+  }
 }
 `
     writeFileSync(join(this.testProjectDir, "next.config.js"), nextConfig)
   }
 
   private createWebpackConfig(config: TestProjectConfig): void {
-    const webpackConfig = config.webpackConfig || `
+    const webpackConfig =
+      config.webpackConfig ||
+      `
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
@@ -218,7 +231,12 @@ module.exports = {
               "@/*": ["./src/*"],
             },
           },
-          include: ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
+          include: [
+            "next-env.d.ts",
+            "**/*.ts",
+            "**/*.tsx",
+            ".next/types/**/*.ts",
+          ],
           exclude: ["node_modules"],
         }
       : {
@@ -321,10 +339,7 @@ export default function RootLayout({
 `
     )
 
-    writeFileSync(
-      join(this.testProjectDir, "src", "app", "page.tsx"),
-      testPage
-    )
+    writeFileSync(join(this.testProjectDir, "src", "app", "page.tsx"), testPage)
   }
 
   private createWebpackFiles(config: TestProjectConfig): void {
@@ -440,4 +455,4 @@ ex:Person
   malformed: `@prefix ex: <http://example.org/> .
 ex:Person a ex:Person
 # Missing period at end`,
-} 
+}
