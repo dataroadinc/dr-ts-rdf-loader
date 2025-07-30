@@ -1,5 +1,5 @@
 import { describe, expect, it, vi } from "vitest"
-import loader from "./index.js"
+import loader from "../src/index.js"
 
 describe("@dataroadinc/rdf-loader", () => {
   it("should process Turtle files correctly", async () => {

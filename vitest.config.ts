@@ -4,7 +4,17 @@ export default defineConfig({
   test: {
     globals: true,
     environment: "node",
-    include: ["src/**/*.test.ts", "src/**/*.test.tsx"],
+    include: ["tests/**/*.test.ts", "tests/**/*.test.tsx"],
     exclude: ["node_modules", "dist"],
+    watch: false,
+    setupFiles: ["tests/setup.ts"],
+    reporters: [
+      [
+        "default",
+        {
+          summary: false,
+        },
+      ],
+    ],
   },
 })

@@ -3,4 +3,4 @@
 pnpm format:check
 pnpm lint
 # pnpm build  # Temporarily disabled for initial release
-# pnpm test   # Temporarily disabled for initial release
+pnpm test

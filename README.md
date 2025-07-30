@@ -27,9 +27,10 @@ directly as JavaScript modules in Next.js and other webpack-based applications.
 - **Zero Assumptions**: Generic loader that works with any RDF vocabulary or
   ontology
 
-> **Note**: This loader is designed for webpack and is not compatible with
-> Turbopack. If you need to use this loader, please use webpack instead of
-> Turbopack in your Next.js configuration.
+> **Note**: This loader is designed for webpack and has **experimental support**
+> for Turbopack. While Turbopack configuration is tested, it may not work in all
+> scenarios. For production use, we recommend using webpack instead of
+> Turbopack.
 
 ## Installation
 
@@ -84,6 +85,57 @@ module.exports = {
   },
 }
 ```
+
+### 1.1. Turbopack Support (Experimental)
+
+For Next.js applications using Turbopack, you can configure the loader in your
+`next.config.js`:
+
+```javascript
+// next.config.js
+module.exports = {
+  experimental: {
+    turbo: {
+      rules: {
+        "*.ttl": {
+          loaders: ["@dataroadinc/rdf-loader"],
+          as: "*.js",
+          options: { verbose: true, failOnError: false },
+        },
+        "*.nt": {
+          loaders: ["@dataroadinc/rdf-loader"],
+          as: "*.js",
+          options: { verbose: true, failOnError: false },
+        },
+        "*.nq": {
+          loaders: ["@dataroadinc/rdf-loader"],
+          as: "*.js",
+          options: { verbose: true, failOnError: false },
+        },
+        "*.rdf": {
+          loaders: ["@dataroadinc/rdf-loader"],
+          as: "*.js",
+          options: { verbose: true, failOnError: false },
+        },
+        "*.jsonld": {
+          loaders: ["@dataroadinc/rdf-loader"],
+          as: "*.js",
+          options: { verbose: true, failOnError: false },
+        },
+        "*.trig": {
+          loaders: ["@dataroadinc/rdf-loader"],
+          as: "*.js",
+          options: { verbose: true, failOnError: false },
+        },
+      },
+    },
+  },
+}
+```
+
+**Note**: Turbopack support is experimental and may not work in all scenarios.
+The loader has been tested with Turbopack configuration but runtime behavior may
+vary.
 
 ### 2. TypeScript Configuration
 
@@ -203,6 +255,23 @@ ex:Person
 ## License
 
 MIT
+
+## Testing
+
+This package includes comprehensive tests for:
+
+- **Unit Tests**: Core loader functionality with various RDF formats
+- **Webpack Integration Tests**: Configuration validation for webpack-based
+  projects
+- **Turbopack Integration Tests**: Configuration validation for Turbopack-based
+  projects
+- **External File Tests**: Support for RDF files outside the `src` directory
+
+Run tests with:
+
+```bash
+pnpm test
+```
 
 ## Contributing
 
