@@ -28,9 +28,9 @@ directly as JavaScript modules in Next.js and other webpack-based applications.
   ontology
 
 > **Note**: This loader is designed for webpack and has **experimental support**
-> for Turbopack. While Turbopack configuration is tested, it may not work in all
-> scenarios. For production use, we recommend using webpack instead of
-> Turbopack.
+> for Turbopack. The loader supports both CommonJS and ES module environments,
+> making it compatible with various build configurations. For production use, we
+> recommend using webpack instead of Turbopack.
 
 ## Installation
 
